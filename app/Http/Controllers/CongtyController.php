@@ -19,6 +19,7 @@ class CongtyController extends Controller
 
         if ($search) {
             $query->where('ten', 'like', '%' . $search . '%');
+            $query->orWhere('ten_viet_tat', 'like', '%' . $search . '%');
         }
         $query->orderBy('created_at', 'desc');
 
@@ -27,7 +28,7 @@ class CongtyController extends Controller
     }
 
     public function store(CongtyStoreRequest $request)
-    {        
+    {
         $congty = Congty::create([
             'ten' => $request->ten,
             'ten_viet_tat' => $request->ten_viet_tat,
