@@ -43,4 +43,31 @@ class CongtyController extends Controller
     {
         return new CongtyResource($congty);
     }
+
+    public function update(CongtyStoreRequest $request, Congty $congty)
+    {
+        $congty->update([
+            'ten' => $request->ten,
+            'ten_viet_tat' => $request->ten_viet_tat,
+            'sdt' => $request->sdt,
+            'dia_chi' => $request->dia_chi,
+            'trang_thai' => $request->trang_thai,
+        ]);
+        return new CongtyResource($congty);
+    }
+
+    //destroy and destroyMany
+
+    public function destroy(Congty $congty)
+    {
+        $congty->delete();
+        return response()->json(['message' => 'Xóa thành công']);
+    }
+
+    public function destroyMany(Request $request)
+    {
+        $ids = $request->input('ids');
+        Congty::destroy($ids);
+        return response()->json(['message' => 'Xóa thành công']);
+    }
 }

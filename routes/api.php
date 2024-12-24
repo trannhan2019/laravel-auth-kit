@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CongtyController;
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::apiResource('congties', CongtyController::class);
+Route::delete('congties/deleteMany', [CongtyController::class, 'destroyMany']);
