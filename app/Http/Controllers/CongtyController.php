@@ -60,14 +60,7 @@ class CongtyController extends Controller
 
     public function destroy(Congty $congty)
     {
-        $congty->delete();
-        return response()->json(['message' => 'Xóa thành công']);
-    }
-
-    public function destroyMany(Request $request)
-    {
-        $ids = $request->input('ids');
-        Congty::destroy($ids);
+        Congty::destroy($congty);
         return response()->json(['message' => 'Xóa thành công']);
     }
 }

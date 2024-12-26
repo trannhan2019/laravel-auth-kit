@@ -9,4 +9,3 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::apiResource('congties', CongtyController::class);
-Route::delete('congties/deleteMany', [CongtyController::class, 'destroyMany']);
